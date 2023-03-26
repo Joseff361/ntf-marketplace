@@ -1,10 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font/build/FontHooks';
-import { StatusBar } from 'expo-status-bar';
 
+import DetailsScreen from './components/screens/DetailsScreen';
+import HomeScreen from './components/screens/HomeScreen';
 import { Fonts } from '../src/constants/fonts';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'transparent',
+  },
+};
+
+function App() {
   const [fontsLoaded] = useFonts({
     [Fonts.RajdhaniBold]: require('../assets/fonts/Rajdhani-Bold.ttf'),
     [Fonts.RajdhaniLight]: require('../assets/fonts/Rajdhani-Light.ttf'),
@@ -18,20 +30,16 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={{ fontFamily: Fonts.RajdhaniMedium }}>
-        Open up App.tsx to start working on your app!
-      </Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+        initialRouteName="Home"
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
