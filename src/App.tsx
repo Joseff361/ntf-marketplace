@@ -2,9 +2,9 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font/build/FontHooks';
 
-import DetailsScreen from './components/screens/DetailsScreen';
-import HomeScreen from './components/screens/HomeScreen';
-import { Fonts } from '../src/constants/fonts';
+import DetailsScreen from './screens/DetailsScreen';
+import HomeScreen from './screens/HomeScreen';
+import { Fonts } from '../src/constants';
 
 const Stack = createStackNavigator();
 
