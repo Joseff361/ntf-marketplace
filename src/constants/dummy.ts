@@ -1,6 +1,7 @@
+import { NTF } from '../models/NTF';
 import assets from './assets';
 
-const NFTData = [
+const NFTData: NTF[] = [
   {
     id: 'NFT-01',
     name: 'Abstracto #312',
