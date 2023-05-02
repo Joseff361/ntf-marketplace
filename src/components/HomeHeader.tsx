@@ -1,4 +1,12 @@
-import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  Pressable,
+} from 'react-native';
+import { useRef } from 'react';
 
 import { Assets, Colors, Fonts, Sizes } from '../constants';
 
@@ -7,6 +15,12 @@ interface Props {
 }
 
 function HomeHeader({ onSearch }: Props) {
+  const inputRef = useRef<any>();
+
+  const onPressInputHandler = () => {
+    !!inputRef && inputRef.current.focus();
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.heaerContainer}>
@@ -32,19 +46,20 @@ function HomeHeader({ onSearch }: Props) {
         <Text style={styles.waveText}>Hello, Emma 👋</Text>
         <Text style={styles.advice}>Let's find a masterpiece</Text>
       </View>
-      <View style={styles.searchContainer}>
+      <Pressable style={styles.searchContainer} onPress={onPressInputHandler}>
         <Image
           source={Assets.search}
           resizeMode="contain"
           style={styles.searchIcon}
         />
         <TextInput
+          ref={inputRef}
           style={styles.input}
           placeholder="Search NTFs"
           placeholderTextColor={Colors.secondary}
           onChangeText={onSearch}
         />
-      </View>
+      </Pressable>
     </View>
   );
 }
