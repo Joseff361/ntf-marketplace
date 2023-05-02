@@ -1,4 +1,4 @@
-interface Bid {
+export interface Bid {
   id: string;
   name: string;
   price: number;

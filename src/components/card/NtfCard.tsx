@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import { View, Image, StyleSheet } from 'react-native';
 
-import { Colors, Shadows, Sizes } from '../../constants';
-import NtfFavoriteButton from './NtfCardFavoriteButton';
+import { Assets, Colors, Shadows, Sizes } from '../../constants';
+import CircularButton from '../CircularButton';
 import NtfCardFooter from './NtfCardFooter';
-import NtfCardTitle from './NtfCardTitle';
 import NtfCardInfo from './NtfCardInfo';
 import { NTF } from '../../models/NTF';
+import NtfTitle from '../NtfTitle';
 
 interface Props {
   ntf: NTF;
@@ -24,10 +24,13 @@ function NTFCard({ ntf }: Props) {
   return (
     <View style={styles.container}>
       <Image source={ntf.image} resizeMode="cover" style={styles.image} />
-      <NtfFavoriteButton onPress={onPressFavoriteHandler} />
+      <CircularButton
+        onPress={onPressFavoriteHandler}
+        sourceImage={Assets.heart}
+      />
       <View style={styles.descriptionContainer}>
         <NtfCardInfo style={styles.infoContainer} />
-        <NtfCardTitle
+        <NtfTitle
           title={ntf.name}
           subtitle={ntf.creator}
           style={styles.titleContainer}

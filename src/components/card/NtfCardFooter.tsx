@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { Assets, Colors, Fonts, Sizes } from '../../constants';
+import { Colors, Fonts, Sizes } from '../../constants';
+import NTFPrice from '../NtfPrice';
 
 interface Props {
   price: string | number;
@@ -10,10 +11,7 @@ interface Props {
 function NtfCardFooter({ price, onPressDetails }: Props) {
   return (
     <View style={[styles.container, styles.row]}>
-      <View style={styles.row}>
-        <Image source={Assets.eth} resizeMode="contain" style={styles.image} />
-        <Text style={styles.priceText}>{price}</Text>
-      </View>
+      <NTFPrice price={price} />
       <TouchableOpacity style={styles.buttonContainer} onPress={onPressDetails}>
         <Text style={styles.buttonText}>Place a bid</Text>
       </TouchableOpacity>
@@ -28,16 +26,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  image: {
-    width: 20,
-    height: 20,
-    marginRight: 5,
-  },
-  priceText: {
-    fontFamily: Fonts.RajdhaniMedium,
-    fontSize: Sizes.font,
-    color: Colors.primary,
   },
   buttonContainer: {
     borderRadius: Sizes.extraLarge,

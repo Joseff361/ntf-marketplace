@@ -1,6 +1,6 @@
 import { View, Text, StyleProp, ViewStyle, StyleSheet } from 'react-native';
 
-import { Colors, Fonts, Sizes } from '../../constants';
+import { Colors, Fonts, Sizes } from '../constants';
 
 interface Props {
   title: string;
@@ -8,7 +8,7 @@ interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
-function NtfCardTitle({ title, subtitle, style = {} }: Props) {
+function NtfTitle({ title, subtitle, style = {} }: Props) {
   return (
     <View style={[style]}>
       <Text style={styles.title}>{title}</Text>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NtfCardTitle;
+export default NtfTitle;
